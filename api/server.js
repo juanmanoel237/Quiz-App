@@ -1,4 +1,4 @@
-require ('dotenv').config()
+require('dotenv').config()
 const express = require('express')
 const cors =  require('cors')
 const mongoose = require('mongoose')
@@ -12,7 +12,11 @@ mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connecté'))
     .catch(err => console.error(err));
 
-    
+const authRoutes = require('./routes/auth')
+const quizRoutes = require('./routes/quiz')
+
+//app.use('/api/auth', authRoutes);
+//app.use('/api/quiz', quizRoutes);
 
 app.listen(port, ()=>{
     console.log('Server lancé !!!!');
