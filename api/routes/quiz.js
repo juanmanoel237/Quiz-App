@@ -19,3 +19,38 @@ function authenticatAdmin (req, res, next){
         res.status(403).json({message: "Token invalide"})
     }    
 }
+
+// Ajout de question
+router.post('/add', authenticatAdmin, async (req, res)=>{
+    try{
+        const {question, options, correctAnswer} = req.body
+        const newQuestion = new Question({ question, options, correctAnswer })
+        await newQuestion.save()
+        res.status(201).json({message: "Question ajouté"})
+    }
+    catch(error){
+        res.status(500).json({ message: 'Erreur serveur' });
+    }
+})
+
+router.delete('/delete/:id', authenticatAdmin, async (req, res)=>{
+    try{
+        await Question.findByIdAndDelete(req.params.id)
+        res.status(200).json({message:"Question supprimée"})
+    }
+    catch(error){
+        res.status(500).json({message:"Erreur serveur"})
+    }
+})
+
+router.get('/all', async (req, res)=>{
+    try{
+        const questions = await Question.find()
+        res.json(questions)
+    }
+    catch(error){
+        res.status(500).json({message: "Erreur serveur"})
+    }
+})
+
+module.exports = router;
