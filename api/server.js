@@ -15,8 +15,8 @@ mongoose.connect(process.env.MONGODB_URI)
 const authRoutes = require('./routes/auth')
 const quizRoutes = require('./routes/quiz')
 
-//app.use('/api/auth', authRoutes);
-//app.use('/api/quiz', quizRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/quiz', quizRoutes);
 
 app.listen(port, ()=>{
     console.log('Server lancé !!!!');
