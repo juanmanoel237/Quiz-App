@@ -51,8 +51,8 @@ router.post('/login', async (req, res) => {
             process.env.JWT_SECRET
         )
 
-        // Retourner le token JWT dans la réponse
-        res.json(token)
+        // Retourner le token JWT et le statut admin dans la réponse
+        res.json({token, isAdmin: user.isAdmin})
     } catch (error) {
         res.status(500).json({ message: 'Erreur serveur' })
     }
