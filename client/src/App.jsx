@@ -10,7 +10,7 @@ import Admin from './Components/Admin';
 function App() {
 
   const [isAdmin, setIsAdmin] = useState(false)
-  const [token, setToken] = useState(localStorage.getItem(token) || null)
+  const [token, setToken] = useState(localStorage.getItem('token') || null)
 
   const handleLogin = (token, isAdmin) =>{
     localStorage.setItem('token', token)
