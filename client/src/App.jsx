@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Admin from "./Components/Admin";
-import PrivateRoutes from "./Components/PrivateRoutes";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,12 +39,12 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <PrivateRoutes
+          <PrivateRoute
             path="/quiz"
             component={Quiz}
             isAuthenticated={isAuthenticated}
           />
-          <PrivateRoutes
+          <PrivateRoute
             path="/admin"
             component={Admin}
             isAuthenticated={isAdmin}
